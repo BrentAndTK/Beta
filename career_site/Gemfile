@@ -51,7 +51,7 @@ group :development do
 end
 
 #haml rails gem
-gem "haml-rails", "~> 0.9"
+gem "haml-rails"
 
 # OmniAuth Gem
   gem 'omniauth-github'
