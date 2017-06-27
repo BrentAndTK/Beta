@@ -12,7 +12,9 @@
         %td= manager.name
         %td= manager.title
         %td= link_to 'Show', manager
+        - if signed_in?
         %td= link_to 'Edit', edit_manager_path(manager)
         %td= link_to 'Destroy', manager, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
+- if signed_in?
 = link_to 'New Manager', new_manager_path
