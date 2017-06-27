@@ -1,4 +1,5 @@
 class ManagersController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
   before_action :set_manager, only: [:show, :edit, :update, :destroy]
 
   # GET /managers
@@ -25,6 +26,7 @@ class ManagersController < ApplicationController
   # POST /managers.json
   def create
     @manager = Manager.new(manager_params)
+    @manager.user = current_user
 
     respond_to do |format|
       if @manager.save
