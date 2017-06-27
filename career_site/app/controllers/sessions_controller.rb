@@ -11,6 +11,8 @@ class SessionsController < ApplicationController
       user.nickname = auth_hash['info']['nickname']
     end
   end
+
   def logout
+    redirect_to login_url, notice: 'You have been logged out'
   end
 end
