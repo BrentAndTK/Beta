@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170627191334) do
 
-  create_table "activejobs", force: :cascade do |t|
-    t.integer "manager_id"
-    t.integer "job_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_activejobs_on_job_id"
-    t.index ["manager_id"], name: "index_activejobs_on_manager_id"
-  end
-
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.string "description"
