@@ -1,4 +1,3 @@
 class Job < ApplicationRecord
-  belongs_to :manager
-  belongs_to :manager, through: :activejobs
+  has_and_belongs_to_many :manager
 end
