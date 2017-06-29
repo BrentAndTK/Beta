@@ -6,7 +6,6 @@
       %th Title
       %th Description
       %th Salary
-      %th Manager
       %th{:colspan => "3"}
   %tbody
     - @jobs.each do |job|
@@ -14,9 +13,11 @@
         %td= job.title
         %td= job.description
         %td= job.salary
-        %td= job.manager
         %td= link_to 'Show', job
-        %td= link_to 'Edit', edit_job_path(job)
-        %td= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }
+        - if signed_in?
+          %td= link_to 'Edit', edit_job_path(job)
+          %td= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Job', new_job_path
+
+%p= "Session id shows #{current_manager}"
