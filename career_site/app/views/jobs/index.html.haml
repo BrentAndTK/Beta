@@ -14,8 +14,9 @@
         %td= job.description
         %td= job.salary
         %td= link_to 'Show', job
-        %td= link_to 'Edit', edit_job_path(job)
-        %td= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }
+        - if signed_in?
+          %td= link_to 'Edit', edit_job_path(job)
+          %td= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Job', new_job_path
 

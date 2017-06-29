@@ -8,6 +8,7 @@
 %p
   %strong Salary:
   = @job.salary
-= link_to 'Edit', edit_job_path(@job)
-|
+-if signed_in?
+  = link_to 'Edit', edit_job_path(@job)
+  \|
 = link_to 'Back', jobs_path
