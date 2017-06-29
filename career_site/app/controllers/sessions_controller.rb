@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def login
     if current_user
-      redirect_to managers_url
+      redirect_to jobs_url
     end
   end
 
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       user.nickname = auth_hash['info']['nickname']
     end
     self.current_user = @user
-    redirect_to managers_url
+    redirect_to jobs_url
   end
 
   def logout
