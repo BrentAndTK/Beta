@@ -11,6 +11,7 @@ class ManagersController < ApplicationController
   # GET /managers/1
   # GET /managers/1.json
   def show
+    session[:manager_id] = @manager.id
   end
 
   # GET /managers/new
@@ -30,7 +31,7 @@ class ManagersController < ApplicationController
     respond_to do |format|
       if @manager.save
         session[:manager_id] = @manager.id
-        
+
         format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
         format.json { render :show, status: :created, location: @manager }
       else
@@ -45,6 +46,7 @@ class ManagersController < ApplicationController
   def update
     respond_to do |format|
       if @manager.update(manager_params)
+        session[:manager_id] = @manager.id
         format.html { redirect_to @manager, notice: 'Manager was successfully updated.' }
         format.json { render :show, status: :ok, location: @manager }
       else
