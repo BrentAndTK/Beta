@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_manager
-    @current_manager ||= session[:manager_id] &&
-    Manager.find_by(id: session[:manager_id])
+    @current_manager ||= Manager.find_by_id(session[:manager_id])
   end
+
+  helper_method :current_manager
 end
