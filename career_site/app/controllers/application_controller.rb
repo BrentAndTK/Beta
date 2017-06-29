@@ -30,4 +30,11 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_manager
+
+  def current_manager=(manager)
+    @current_manager = manager
+    session[:manager_id] = @current_manager.id
+    session[:manager_name] = @current_manager.name
+    session[:manager_title] = @current_manager.title
+  end
 end
