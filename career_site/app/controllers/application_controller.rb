@@ -29,15 +29,5 @@ class ApplicationController < ActionController::Base
     @current_manager ||= Manager.find_by_id(session[:manager_id])
   end
 
-  helper_method :current_manager, :manager_selected?
-
-  def manager_selected?
-    !!current_manager
-  end
-
-  def authenticate_manager
-    unless manager_selected?
-      redirect_to manager_path
-    end
-  end
+  helper_method :current_manager
 end
