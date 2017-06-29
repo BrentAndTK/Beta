@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def current_manager
+    @current_manager ||= Manager.find_by_id(session[:manager_id])
+  end
+
+  helper_method :current_manager
 end

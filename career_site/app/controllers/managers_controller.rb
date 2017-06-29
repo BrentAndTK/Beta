@@ -27,9 +27,11 @@ class ManagersController < ApplicationController
   def create
     @manager = Manager.new(manager_params)
     @manager.user = current_user
-    session[:manager_id] = @manager.id
+
     respond_to do |format|
       if @manager.save
+        session[:manager_id] = @manager.id
+
         format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
         format.json { render :show, status: :created, location: @manager }
       else
