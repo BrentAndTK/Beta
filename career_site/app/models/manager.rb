@@ -1,4 +1,5 @@
 class Manager < ApplicationRecord
-  has_many :jobs
+  belongs_to :user
+  has_many :activejobs
   has_many :jobs, through: :activejobs
 end

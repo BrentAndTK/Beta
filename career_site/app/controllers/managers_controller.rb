@@ -1,4 +1,5 @@
 class ManagersController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
   before_action :set_manager, only: [:show, :edit, :update, :destroy]
 
   # GET /managers
@@ -25,7 +26,8 @@ class ManagersController < ApplicationController
   # POST /managers.json
   def create
     @manager = Manager.new(manager_params)
-
+    @manager.user = current_user
+    session[:manager_id] = @manager.id
     respond_to do |format|
       if @manager.save
         format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
@@ -54,10 +56,14 @@ class ManagersController < ApplicationController
   # DELETE /managers/1
   # DELETE /managers/1.json
   def destroy
-    @manager.destroy
-    respond_to do |format|
-      format.html { redirect_to managers_url, notice: 'Manager was successfully destroyed.' }
-      format.json { head :no_content }
+    if @manager.user.uid == current_user.uid
+      @manager.destroy
+      respond_to do |format|
+        format.html { redirect_to managers_url, notice: 'Manager was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to managers_url, notice: "You can only delete your own records"
     end
   end
 
