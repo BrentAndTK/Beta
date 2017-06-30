@@ -1,4 +1,4 @@
 class Job < ApplicationRecord
   belongs_to :user
-  has_many :managers
+  belongs_to :managers
 end
