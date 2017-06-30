@@ -8,6 +8,9 @@
 %p
   %strong Salary:
   = @job.salary
+%p
+  %strong Manager Id:
+  = @manager.job.name
 -if signed_in?
   = link_to 'Edit', edit_job_path(@job)
   \|

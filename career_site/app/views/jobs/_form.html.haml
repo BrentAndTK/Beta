@@ -17,7 +17,6 @@
     = form.label :salary
     = form.text_field :salary, id: :job_salary
   .field
-    = form.label :manager_id
-    = form.text_field :manager_id, id: :job_manager_id
+    = form.hidden_field :manager_id, id: :job_manager_id
   .actions
     = form.submit
