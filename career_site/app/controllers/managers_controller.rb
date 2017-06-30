@@ -11,7 +11,7 @@ class ManagersController < ApplicationController
   # GET /managers/1
   # GET /managers/1.json
   def show
-    session[:manager_id] = @manager.id
+    current_manager = @manager
   end
 
   # GET /managers/new
@@ -30,7 +30,7 @@ class ManagersController < ApplicationController
     @manager.user = current_user
     respond_to do |format|
       if @manager.save
-        session[:manager_id] = @manager.id
+        current_manager = @manager
 
         format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
         format.json { render :show, status: :created, location: @manager }
@@ -46,7 +46,7 @@ class ManagersController < ApplicationController
   def update
     respond_to do |format|
       if @manager.update(manager_params)
-        session[:manager_id] = @manager.id
+        current_manager = @manager
         format.html { redirect_to @manager, notice: 'Manager was successfully updated.' }
         format.json { render :show, status: :ok, location: @manager }
       else
@@ -59,15 +59,11 @@ class ManagersController < ApplicationController
   # DELETE /managers/1
   # DELETE /managers/1.json
   def destroy
-    if @manager.user.uid == current_user.uid
       @manager.destroy
       respond_to do |format|
         format.html { redirect_to managers_url, notice: 'Manager was successfully destroyed.' }
         format.json { head :no_content }
       end
-    else
-      redirect_to managers_url, notice: "You can only delete your own records"
-    end
   end
 
   private
