@@ -14,4 +14,8 @@
           = link_to 'Log Out', logout_path
         - else
           = link_to 'Log In', github_login_path
+    %footer
+      %p
+        - if manager_selected?
+          = "The Current Manager Selected Is #{current_manager.name}"
     = yield
