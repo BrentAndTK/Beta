@@ -1,6 +1,7 @@
 class Job < ApplicationRecord
   belongs_to :user
-  has_many :managers
+  belongs_to :managers
+
 
   validates :title, :description, :salary,  presence:true
 =begin
@@ -9,4 +10,5 @@ class Job < ApplicationRecord
     message: "Must be a valid number"
   }
 =end
+
 end
