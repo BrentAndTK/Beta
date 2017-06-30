@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_manager, only: [:new, :create]
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
