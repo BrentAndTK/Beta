@@ -2,7 +2,7 @@ Job.delete_all
  #...
 Job.create!(
 title: 'Lorem Ipsum',
-manager: 'John Doe',
+managers: 'John Doe',
 description:
 %{<p>
   <em> Lorem ipsum dolor sit amet </em>
@@ -13,7 +13,7 @@ salary: 30000.00
 
 Job.create!(
 title: 'Ipsum Lorem',
-manager:'Sally Sue',
+managers:'Sally Sue',
 description:
 %{<p>
   <em> Ipsum Dolor sit amet </em>
@@ -24,7 +24,7 @@ salary: 60000.00
 
 Job.create!(
 title: 'Sit Amet',
-manager: 'Someone',
+managers: 'Someone',
 description:
 %{<p>
   <em> Dolor sit amet </em>

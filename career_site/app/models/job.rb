@@ -4,11 +4,6 @@ class Job < ApplicationRecord
 
 
   validates :title, :description, :salary,  presence:true
-=begin
-  validates :salary, format: {
-    with: (/[0-9]{0,3}[\,]?[0-9]{0,3}[\.]?[0-9]{2}/)
-    message: "Must be a valid number"
-  }
-=end
-
+  validates :salary, format: { with: (/[0-9]{0,3}[\,]?[0-9]{0,3}[\.]?[0-9]{2}/) }
+  validates :managers, presence:true
 end

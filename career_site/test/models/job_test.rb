@@ -9,10 +9,10 @@ test "job requires all fields" do
  assert job.errors[:title].any?
  assert job.errors[:description].any?
  assert job.errors[:salary].any?
-#test "job has to be posted by manager or admin"
 end
 
-  # test "the truth" do
-  #   assert true
-  # end
+test "job has to be posted by manager or admin" do
+##some code to test user login
+end
+
 end
