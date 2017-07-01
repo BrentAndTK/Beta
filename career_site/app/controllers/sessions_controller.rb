@@ -16,7 +16,10 @@ class SessionsController < ApplicationController
     self.current_user = @user
     redirect_to jobs_url
   end
+  protected
 
+  def auth_hash
+    request.env['omniauth.auth']
   def logout
     reset_session
     redirect_to login_url, notice: "You have been successfully logged out."
