@@ -11,7 +11,7 @@
     - @jobs.each do |job|
       %tr
         %td= job.title
-        %td= job.description
+        %td= truncate(strip_tags(job.description), length: 50)
         %td= job.salary
         %td= link_to 'Show', job
         - if signed_in?
