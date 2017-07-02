@@ -1,4 +1,5 @@
 class ManagersController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
   before_action :set_manager, only: [:show, :edit, :update, :destroy]
 
   # GET /managers
@@ -10,6 +11,7 @@ class ManagersController < ApplicationController
   # GET /managers/1
   # GET /managers/1.json
   def show
+    self.current_manager = @manager
   end
 
   # GET /managers/new
@@ -25,9 +27,12 @@ class ManagersController < ApplicationController
   # POST /managers.json
   def create
     @manager = Manager.new(manager_params)
+    @manager.user = current_user
 
     respond_to do |format|
       if @manager.save
+        self.current_manager = @manager
+
         format.html { redirect_to @manager, notice: 'Manager was successfully created.' }
         format.json { render :show, status: :created, location: @manager }
       else
@@ -42,6 +47,7 @@ class ManagersController < ApplicationController
   def update
     respond_to do |format|
       if @manager.update(manager_params)
+        self.current_manager = @manager
         format.html { redirect_to @manager, notice: 'Manager was successfully updated.' }
         format.json { render :show, status: :ok, location: @manager }
       else
@@ -54,11 +60,11 @@ class ManagersController < ApplicationController
   # DELETE /managers/1
   # DELETE /managers/1.json
   def destroy
-    @manager.destroy
-    respond_to do |format|
-      format.html { redirect_to managers_url, notice: 'Manager was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      @manager.destroy
+      respond_to do |format|
+        format.html { redirect_to managers_url, notice: 'Manager was successfully destroyed.' }
+        format.json { head :no_content }
+      end
   end
 
   private

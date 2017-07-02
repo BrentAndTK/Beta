@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @manager.name
+%p
+  %strong Title:
+  = @manager.title
+-if signed_in?
+  = link_to "Create A New Job for #{@manager.name}", new_job_path
+  %p
+  = link_to 'Edit', edit_manager_path(@manager)
+%p
+= link_to 'Back', managers_path

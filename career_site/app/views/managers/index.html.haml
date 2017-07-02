@@ -1,0 +1,19 @@
+%p#notice= notice
+%h1 Managers
+%table
+  %thead
+    %tr
+      %th Name
+      %th Title
+      %th{:colspan => "3"}
+  %tbody
+    - @managers.each do |manager|
+      %tr
+        %td= manager.name
+        %td= manager.title
+        %td= link_to 'Select', manager
+        - if signed_in?
+          %td= link_to 'Edit', edit_manager_path(manager)
+          %td= link_to 'Destroy', manager, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Manager', new_manager_path
