@@ -1,3 +1,24 @@
 // Place all the styles related to the jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.jobs {
+  h1 {
+    margin: 0;
+    padding-bottom: 0.5em;
+    font: 150% sans-serif;
+    color: blue;
+  }
+
+  .entry{
+    overflow: auto;
+    margin-top: 1em;
+    min-height: 100px;
+  }
+
+  h3{
+    font-size: 110%;
+    font-family: sans-serif;
+
+  }
+
+}
